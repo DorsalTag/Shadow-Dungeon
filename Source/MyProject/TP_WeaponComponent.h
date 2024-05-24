@@ -14,9 +14,16 @@ class MYPROJECT_API UTP_WeaponComponent : public USkeletalMeshComponent
 	GENERATED_BODY()
 
 public:
+
+	UPROPERTY(EditAnywhere, Category=Projectile)
+	TSubclassOf<class AMyProjectProjectile> currentArrowClass;
+
 	/** Projectile class to spawn */
-	UPROPERTY(EditDefaultsOnly, Category=Projectile)
-	TSubclassOf<class AMyProjectProjectile> ProjectileClass;
+	UPROPERTY(EditAnywhere, Category=Projectile)
+	TSubclassOf<class AMyProjectProjectile> FireArrowClass;
+
+	UPROPERTY(EditAnywhere, Category=Projectile)
+	TSubclassOf<class AMyProjectProjectile> WaterProjectileClass;
 
 	/** Sound to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
@@ -38,6 +45,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category=Input, meta=(AllowPrivateAccess = "true"))
 	class UInputAction* FireAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* SwapArrowAction;
+
 	/** Sets default values for this component's properties */
 	UTP_WeaponComponent();
 
@@ -48,6 +58,11 @@ public:
 	/** Make the weapon Fire a Projectile */
 	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void Fire();
+
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+	void SwapArrow();
+
+	
 
 protected:
 	/** Ends gameplay for this component. */

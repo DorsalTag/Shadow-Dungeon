@@ -26,7 +26,7 @@ void UTP_WeaponComponent::Fire()
 	}
 
 	// Try and fire a projectile
-	if (ProjectileClass != nullptr)
+	if (currentArrowClass != nullptr)
 	{
 		UWorld* const World = GetWorld();
 		if (World != nullptr)
@@ -41,7 +41,7 @@ void UTP_WeaponComponent::Fire()
 			ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
 	
 			// Spawn the projectile at the muzzle
-			World->SpawnActor<AMyProjectProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
+			World->SpawnActor<AMyProjectProjectile>(currentArrowClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 		}
 	}
 	
@@ -93,8 +93,22 @@ void UTP_WeaponComponent::AttachWeapon(AMyProjectCharacter* TargetCharacter)
 		{
 			// Fire
 			EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Triggered, this, &UTP_WeaponComponent::Fire);
+			EnhancedInputComponent->BindAction(SwapArrowAction, ETriggerEvent::Started, this, &UTP_WeaponComponent::SwapArrow);
 		}
 	}
+}
+
+void UTP_WeaponComponent::SwapArrow()
+{
+	if (currentArrowClass == WaterProjectileClass)
+	{
+		currentArrowClass = FireArrowClass;
+	}
+	else
+	{
+		currentArrowClass = WaterProjectileClass;
+	}
+	
 }
 
 void UTP_WeaponComponent::EndPlay(const EEndPlayReason::Type EndPlayReason)
