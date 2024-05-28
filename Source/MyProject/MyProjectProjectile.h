@@ -21,10 +21,13 @@ class AMyProjectProjectile : public AActor
 	/** Projectile movement component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
 	UProjectileMovementComponent* ProjectileMovement;
+	
 
 public:
 	AMyProjectProjectile();
 
+	UPROPERTY(VisibleAnywhere)
+	bool FireArrow;
 	/** called when projectile hits something */
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);

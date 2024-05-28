@@ -6,6 +6,7 @@
 
 AMyProjectProjectile::AMyProjectProjectile() 
 {
+	FireArrow = true;
 	// Use a sphere as a simple collision representation
 	CollisionComp = CreateDefaultSubobject<USphereComponent>(TEXT("SphereComp"));
 	CollisionComp->InitSphereRadius(5.0f);
@@ -37,7 +38,9 @@ void AMyProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActo
 	if ((OtherActor != nullptr) && (OtherActor != this) && (OtherComp != nullptr) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
-
+		
+		ATorchScript* torch = Cast<ATorchScript>(OtherActor);
+		if(torch)
 		Destroy();
 	}
 }
