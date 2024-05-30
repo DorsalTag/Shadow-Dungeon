@@ -39,8 +39,8 @@ void AMyProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActo
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 		
-		ATorchScript* torch = Cast<ATorchScript>(OtherActor);
-		if(torch)
+		//ATorchScript* torch = Cast<ATorchScript>(OtherActor);
+		//if(torch)
 		Destroy();
 	}
 }
