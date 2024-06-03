@@ -38,7 +38,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* SwapArrowAction;
 
-	UMyCrossbow()
+	UMyCrossbow();
 
 	//UFUNCTION(BlueprintCallable, Category = "Weapon")
 	//void AttachWeapon(AMyProjectCharacter* TargetCharacter);
