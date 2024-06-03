@@ -18,7 +18,7 @@ public:
 	UPROPERTY(EditAnywhere, Category=Projectile)
 	TSubclassOf<class AMyProjectProjectile> currentArrowClass;
 
-	/** Projectile class to spawn */
+	/** Projectile class to spawn */	
 	UPROPERTY(EditAnywhere, Category=Projectile)
 	TSubclassOf<class AMyProjectProjectile> FireArrowClass;
 
