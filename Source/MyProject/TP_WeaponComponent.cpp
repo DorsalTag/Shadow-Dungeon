@@ -42,14 +42,14 @@ void UTP_WeaponComponent::Fire()
 	
 			// Spawn the projectile at the muzzle
 			AMyProjectProjectile* newArrow = World->SpawnActor<AMyProjectProjectile>(currentArrowClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
-			if (currentArrowClass == FireArrowClass)
+			/*if (currentArrowClass == FireArrowClass)
 			{
 				newArrow->FireArrow = true;
 			}
 			else
 			{
 				newArrow->FireArrow = false;
-			}
+			}*/
 		}
 	}
 	

@@ -26,8 +26,8 @@ class AMyProjectProjectile : public AActor
 public:
 	AMyProjectProjectile();
 
-	UPROPERTY(VisibleAnywhere)
-	bool FireArrow;
+	/*UPROPERTY(VisibleAnywhere)
+	bool FireArrow;*/
 	/** called when projectile hits something */
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
